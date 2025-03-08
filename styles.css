@@ -24,8 +24,28 @@ h1 {
     text-decoration: none;
     border-radius: 5px;
     font-size: 1.2em;
+    position: relative; /* Pour que la fumée apparaisse par rapport au bouton */
 }
 
 .btn:hover {
     background-color: #cc0040;
+}
+
+/* Effet de fumée */
+.smoke {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(255,255,255,0));
+    border-radius: 50%;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+.btn:active + .smoke {
+    transform: scale(3);
+    opacity: 1;
 }
