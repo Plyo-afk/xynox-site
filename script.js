@@ -1,13 +1,19 @@
-document.body.addEventListener('click', function (event) {
-    const smoke = document.querySelector('.smoke');
-    const colors = ['#ff0050', '#00ff90', '#0050ff', '#f4ff00']; // Couleurs pour la fumée
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+document.body.addEventListener('click', function(e) {
+    const circle = document.getElementById('circle');
+    
+    // Positionner le cercle au point de clic
+    circle.style.left = `${e.pageX - 25}px`; // Centre le cercle
+    circle.style.top = `${e.pageY - 25}px`; // Centre le cercle
+    
+    // Afficher le cercle
+    circle.style.opacity = 1;
 
-    smoke.style.backgroundColor = randomColor;
-    smoke.classList.add('active');
+    // Change la couleur du cercle de manière aléatoire
+    const randomColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    circle.style.backgroundColor = randomColor;
 
-    // Supprimer l'effet de fumée après l'animation
+    // Masquer le cercle après l'animation
     setTimeout(() => {
-        smoke.classList.remove('active');
-    }, 2000); // Durée de l'animation (2s)
+        circle.style.opacity = 0;
+    }, 300);
 });
